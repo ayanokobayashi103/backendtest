@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mysql:
+    # imageの指定
+    build: ./mysql/    #Dockerfileからビルドすることを示す
+    image: "mysql"
+    volumes:
+      - ./mysql/db:/docker-entrypoint-initdb.d  #初期データ
+    command: --default-authentication-plugin=mysql_native_password
+    # 環境変数の設定
+    # container_name: my_db
+    environment:
+      - MYSQL_DATABASE=gruneasia_backendtest
+      - MYSQL_USER=grune
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "33306:3306"
+    volumes:
+      # 名前付きボリュームを定義
+      - db-store:/var/lib/mysql
+  # mysqlサービスにボリュームマウントを定義
+volumes:
+  db-store:
