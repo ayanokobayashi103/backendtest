@@ -28,6 +28,33 @@ class CompanyController extends Controller
     }
 
     /**
+     * Validator for user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function validator(array $data, $type)
+    {
+        // Determine if password validation is required depending on the calling
+        return Validator::make($data, [
+            'username' => 'required|string|max:255|unique:users,username,' . $data['id'],
+            'display_name' => 'required|string|max:100',
+            // (update: not required, create: required)
+            // 'email' => 'required|string|min:6|max:255',
+            // 'phone' => 'required|string|min:6|max:255',
+            // 'postcode' => 'required|string|min:6|max:255',
+            // 'city' => 'required|string|min:6|max:255',
+            // 'local' => 'required|string|min:6|max:255',
+            // 'street_address' => 'string|min:6|max:255',
+            // 'business_hour' => 'string|min:6|max:255',
+            // 'regular_holiday' => 'string|min:6|max:255',
+            // 'image' => 'string|min:6|max:255',
+            // 'fax' => 'string|min:6|max:255',
+            // 'url' => 'string|min:6|max:255',
+            // 'license_number' => 'string|min:6|max:255',
+            // 'regular_holiday' => 'string|min:6|max:255',
+        ]);
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
