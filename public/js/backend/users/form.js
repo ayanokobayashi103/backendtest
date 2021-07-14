@@ -5,6 +5,7 @@ $(function () {
     $('li#menu-users').find('.treeview-menu').find('.edit-users a').addClass('sub-menu-active');
 
     $('#user-form').validationEngine('attach', {
+        // 表示される1を指定
         promptPosition : 'topLeft',
         scroll: false
     });
