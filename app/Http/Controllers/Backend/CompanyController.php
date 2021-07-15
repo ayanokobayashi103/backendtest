@@ -22,11 +22,6 @@ class CompanyController extends Controller
         return 'admin.company';
     }
 
-    public function index()
-    {
-        return view('backend.companies.index');
-    }
-
     /**
      * Validator for user
      *
@@ -36,8 +31,8 @@ class CompanyController extends Controller
     {
         // Determine if password validation is required depending on the calling
         return Validator::make($data, [
-            'username' => 'required|string|max:255|unique:users,username,' . $data['id'],
-            'display_name' => 'required|string|max:100',
+            // 'username' => 'required|string|max:255|unique:users,username,' . $data['id'],
+            // 'display_name' => 'required|string|max:100',
             // (update: not required, create: required)
             // 'email' => 'required|string|min:6|max:255',
             // 'phone' => 'required|string|min:6|max:255',
@@ -54,6 +49,11 @@ class CompanyController extends Controller
             // 'regular_holiday' => 'string|min:6|max:255',
         ]);
     }
+
+    public function index() {
+        return view('backend.companies.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +70,7 @@ class CompanyController extends Controller
         ]);
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

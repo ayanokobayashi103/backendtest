@@ -27,7 +27,7 @@
                     </div>
                     @endif
 
-                    {{ Form::open(array('route' => $company->form_action, 'method' => 'POST', 'files' => true, 'id' => 'user-form')) }}
+                    {{ Form::open(array('route' => $company->form_action, 'method' => 'POST', 'files' => true, 'id' => 'company-form')) }}
                     {{ Form::hidden('id', $company->id, array('id' => 'company_id')) }}
                     <div id="form-companyname" class="form-group">
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-header">
@@ -250,5 +250,5 @@
 <!-- validationEngine -->
 <script src="{{ asset('js/3rdparty/validation-engine/jquery.validationEngine-en.js') }}"></script>
 <script src="{{ asset('js/3rdparty/validation-engine/jquery.validationEngine.js') }}"></script>
-<script src="{{ asset('js/backend/users/form.js') }}"></script>
+<script src="{{ asset('js/backend/companies/form.js') }}"></script>
 @endsection
