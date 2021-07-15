@@ -22,6 +22,7 @@ class Postcode extends \App\Models\Base\Postcode
 		'indicator_6'
 	];
 
+	// scope
 	public function scopeWhereSearch($query, $postcode)
 	{
 		$query->where('postcode', intval($postcode));

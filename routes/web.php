@@ -56,6 +56,8 @@ Route::GROUP(['middleware' => ['auth:user']], function() {
     Route::GET('/admin/company', 'Backend\CompanyController@index')->name('admin.company');
     Route::GET('/admin/company/add', 'Backend\CompanyController@add')->name('admin.company.add');
     Route::POST('/admin/company/create', 'Backend\CompanyController@create')->name('admin.company.create');
+
+    Route::get('/ajax/postal_search', 'Backend\CompanyController@search');
 });
 
 

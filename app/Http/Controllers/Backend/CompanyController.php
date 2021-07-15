@@ -100,7 +100,7 @@ class CompanyController extends Controller
     // 郵便番号を検索する処理
     public function search(Request $request)
     {
-        return \App\Models\Base\Postcode::whereSearch($request->postcode)->first();
+        return \App\Models\Postcode::WhereSearch($request->postcode)->first();
     }
 
 }
