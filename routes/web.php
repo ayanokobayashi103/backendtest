@@ -56,9 +56,9 @@ Route::GROUP(['middleware' => ['auth:user']], function() {
     Route::GET('/admin/company', 'Backend\CompanyController@index')->name('admin.company');
     Route::GET('/admin/company/add', 'Backend\CompanyController@add')->name('admin.company.add');
     Route::POST('/admin/company/create', 'Backend\CompanyController@create')->name('admin.company.create');
-    Route::GET('/admin/edit/{id}', 'Backend\CompanyController@edit')->name('admin.company.edit');
-    Route::POST('/admin/update', 'Backend\CompanyController@update')->name('admin.company.update');
-    Route::GET('/admin/delete', 'Backend\CompanyController@delete')->name('admin.company.delete');
+    Route::GET('/admin/company/edit/{id}', 'Backend\CompanyController@edit')->name('admin.company.edit');
+    Route::POST('/admin/company/update', 'Backend\CompanyController@update')->name('admin.company.update');
+    Route::GET('/admin/company/delete', 'Backend\CompanyController@delete')->name('admin.company.delete');
     // postcode search
     Route::get('/ajax/postal_search', 'Backend\CompanyController@search');
 });

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Base\Prefecture;
 use App\Models\Company;
 use Config;
 
@@ -78,7 +79,10 @@ class CompanyController extends Controller
      */
     public function create(Request $request) {
         $newCompany = $request->all();
-
+        $prefecture = new Prefecture();
+        $prefecture = $prefecture::where('display_name', $newCompany['prefecture'])->first(['id']);
+        $newCompany['prefecture_id'] = $prefecture['id'];
+        // dd($newCompany);
         // Validate input, indicate this is 'create' function
         $this->validator($newCompany, 'create')->validate();
 
@@ -94,6 +98,19 @@ class CompanyController extends Controller
         } catch (Exception $e) {
             // Create is failed
             return redirect()->route($this->getRoute())->with('error', Config::get('const.FAILED_CREATE_MESSAGE'));
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        try {
+            // Get company by id
+            $company = Company::find($request->get('id'));
+            // dd($company);
+            $company->delete();
+        } catch (Exception $e) {
+            // If delete is failed
+            return redirect()->route($this->getRoute())->with('error', Config::get('const.FAILED_DELETE_MESSAGE'));
         }
     }
 
